@@ -1,0 +1,91 @@
+// admin.js
+import { uploadImageAndSaveMetadata, subscribeOrders, deleteOrder, subscribeImages } from "./firebase.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Elements
+  const uploadForm = document.getElementById("uploadForm");
+  const fileInput = document.getElementById("uploadFile");
+  const uploadMsg = document.getElementById("uploadMsg");
+  const imagesAdminList = document.getElementById("imagesAdminList");
+  const ordersAdminList = document.getElementById("ordersAdminList");
+
+  function showUploadMsg(t) {
+    uploadMsg.textContent = t;
+    setTimeout(() => uploadMsg.textContent = "", 3000);
+  }
+
+  uploadForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = fileInput.files[0];
+    if (!f) {
+      showUploadMsg("اختر ملف صورة أولا");
+      return;
+    }
+    showUploadMsg("جاري رفع الصورة...");
+    try {
+      await uploadImageAndSaveMetadata(f);
+      fileInput.value = "";
+      showUploadMsg("تم رفع الصورة بنجاح ✅");
+    } catch (err) {
+      console.error(err);
+      showUploadMsg("فشل رفع الصورة");
+    }
+  });
+
+  // show images (admin view)
+  subscribeImages((imgs) => {
+    imagesAdminList.innerHTML = "";
+    if (!imgs || imgs.length === 0) {
+      imagesAdminList.innerHTML = "<p>لا توجد صور.</p>";
+      return;
+    }
+    imgs.forEach(img => {
+      const el = document.createElement("div");
+      el.className = "admin-img";
+      el.innerHTML = `
+        <img src="${img.url}" alt="${img.name}">
+        <div>${img.name}</div>
+      `;
+      imagesAdminList.appendChild(el);
+    });
+  });
+
+  // show orders (admin view) with delete button
+  subscribeOrders((orders) => {
+    ordersAdminList.innerHTML = "";
+    if (!orders || orders.length === 0) {
+      ordersAdminList.innerHTML = "<p>لا توجد أوردرات.</p>";
+      return;
+    }
+    orders.forEach(o => {
+      const el = document.createElement("div");
+      el.className = "admin-order";
+      const date = o.createdAt && o.createdAt.seconds ? new Date(o.createdAt.seconds*1000).toLocaleString() : "";
+      el.innerHTML = `
+        <h4>${o.name} <small>(${o.phone})</small></h4>
+        <p>${o.message}</p>
+        ${o.image ? `<img src="${o.image}" style="max-width:160px;border-radius:6px;">` : ""}
+        <small>${date}</small>
+        <div><button class="del-btn" data-id="${o.id}">حذف الأوردر</button></div>
+      `;
+      ordersAdminList.appendChild(el);
+    });
+
+    // attach delete handlers
+    ordersAdminList.querySelectorAll(".del-btn").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const id = btn.getAttribute("data-id");
+        if (!confirm("متأكد عايز تحذف الأوردر ده؟")) return;
+        try {
+          await deleteOrder(id);
+          alert("تم الحذف ✅");
+        } catch (err) {
+          console.error(err);
+          alert("حصل خطأ في الحذف");
+        }
+      });
+    });
+
+  });
+
+});

@@ -1,0 +1,78 @@
+// main.js
+import { addOrder, subscribeImages, subscribeOrders } from "./firebase.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("orderForm");
+  const msgEl = document.getElementById("msg");
+  const imagesContainer = document.getElementById("imagesList");
+  const ordersListClient = document.getElementById("ordersListClient");
+
+  // show messages
+  function showMsg(t) {
+    msgEl.textContent = t;
+    setTimeout(() => msgEl.textContent = "", 3000);
+  }
+
+  // submit order
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !phone || !message) {
+      showMsg("اكمل البيانات المطلوبة");
+      return;
+    }
+
+    try {
+      await addOrder({ name, phone, message });
+      form.reset();
+      showMsg("تم إرسال الأوردر، شكراً ✅");
+    } catch (err) {
+      console.error(err);
+      showMsg("حصل خطأ، حاول ثانية");
+    }
+  });
+
+  // live images
+  subscribeImages((imgs) => {
+    imagesContainer.innerHTML = "";
+    if (!imgs || imgs.length === 0) {
+      imagesContainer.innerHTML = "<p>لا توجد صور للعرض حالياً.</p>";
+      return;
+    }
+    imgs.forEach(img => {
+      const card = document.createElement("div");
+      card.className = "img-card";
+      card.innerHTML = `
+        <img src="${img.url}" alt="${img.name}">
+        <div class="img-name">${img.name}</div>
+      `;
+      imagesContainer.appendChild(card);
+    });
+  });
+
+  // optional: show recent orders to client (if you want clients to see orders list like admin)
+  // If you don't want clients to see orders, comment out subscribeOrders callback.
+  subscribeOrders((orders) => {
+    ordersListClient.innerHTML = "";
+    if (!orders || orders.length === 0) {
+      ordersListClient.innerHTML = "<p>لا توجد أوردرات بعد.</p>";
+      return;
+    }
+    orders.forEach(o => {
+      const d = document.createElement("div");
+      d.className = "order-item";
+      const date = o.createdAt && o.createdAt.seconds ? new Date(o.createdAt.seconds*1000).toLocaleString() : "";
+      d.innerHTML = `
+        <h4>${o.name} - <small>${o.phone}</small></h4>
+        <p>${o.message}</p>
+        ${o.image ? `<img src="${o.image}" style="max-width:150px;border-radius:6px;">` : ""}
+        <small>${date}</small>
+      `;
+      ordersListClient.appendChild(d);
+    });
+  });
+
+});

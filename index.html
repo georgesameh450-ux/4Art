@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4Art للدعاية والإعلان</title>
+    <style>
+        /* CSS Styles (All previous styles remain) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            text-align: center;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            transition: background-image 0.5s ease;
+        }    
+        header {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            padding: 20px 25px;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            max-width: 450px;
+            margin: 40px auto;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px 35px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=tel],
+        input[type=password],
+        textarea,
+        select {
+            width: 100%;
+            padding: 14px 12px;
+            margin: 14px 0;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+            color: #e0e0e0;
+            border-radius: 8px;
+            font-size: 18px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input[type=text]:focus,
+        input[type=email]:focus,
+        input[type=tel]:focus,
+        input[type=password]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #00bcd4;
+        }
+
+        button, .tab {
+            background-color: #000000;
+            color: white;
+            border: 2px solid #00bcd4;
+            padding: 12px 18px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 6px 0;
+            transition: background-color 0.3s, transform 0.2s, color 0.3s;
+        }
+
+        button:hover, .tab:hover {
+            background-color: #00bcd4;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+        
+        .productBtn {
+            background-color: #000000;
+            border: 2px solid #5a5a7e;
+            margin-top: 18px;
+            padding: 16px 20px;
+            font-size: 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            width: 100%;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+        }
+        .productBtn:hover {
+            background-color: #5a5a7e;
+            transform: translateY(-2px);
+        }
+
+        .backBtn {
+            text-align: right;
+            cursor: pointer;
+            color: #888;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 22px;
+            transition: color 0.3s;
+        }
+        .backBtn:hover {
+            color: #e0e0e0;
+        }
+        
+        .error {
+            color: #ff5252;
+            font-size: 16px;
+            margin-top: -6px;
+            margin-bottom: 8px;
+            text-align: right;
+        }
+
+        .section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        
+        #ordersToggle, #messagesToggle, #adminToggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            font-size: 18px;
+            color: white;
+            background: #000000;
+            border: 2px solid #00bcd4;
+            padding: 10px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none;
+            z-index: 1200;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        #messagesToggle {
+            right: 140px;
+        }
+        #adminToggle {
+            top: 15px;
+            left: 15px; /* تم تعديله ليكون في اليسار */
+            background: #000000;
+            border: 2px solid #ff8c00;
+        }
+        
+        /* تم حذف #adminLoginToggle من CSS */
+
+        .small {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        img.thumbnail {
+            width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .thumb-inline {
+            width: 100px;
+            display: inline-block;
+            margin: 6px;
+            vertical-align: top;
+            text-align: center;
+        }
+
+        .thumb-inline img {
+            width: 100px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+            margin-bottom: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .eye {
+            position: absolute;
+            transform: translateX(-40px) translateY(10px);
+            cursor: pointer;
+            font-size: 18px;
+            color: #00bcd4;
+            user-select: none;
+        }
+
+        .relative {
+            position: relative;
+        }
+
+        .admin-panel {
+            text-align: right;
+            direction: rtl;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 18px 0;
+        }
+
+        #imageDetail img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        #previewImg {
+            max-width: 100%;
+            border-radius: 8px;
+            display: none;
+            margin-top: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .order-item {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            text-align: right;
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .order-actions button {
+            margin-left: 8px;
+            background-color: #000000;
+            border: 2px solid #00bcd4;
+        }
+        
+        .order-actions button:hover {
+            background-color: #00bcd4;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        .tab {
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: #000000;
+            border: 2px solid #5a5a7e;
+            color: #fff;
+            cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .tab.active {
+            background: #00bcd4;
+            border: 2px solid #00bcd4;
+        }
+
+        .delete-btn {
+            background-color: #000000;
+            border: 2px solid #ff5252;
+            color: #ff5252;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff5252;
+            color: #fff;
+        }
+        
+        /* تصميم الشات */
+        #myMessages, #adminChatWindow {
+            background-image: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0;
+            border-radius: 16px;
+        }
+
+        #messagesContent, #adminMessagesContent {
+            max-height: 400px;
+            overflow-y: scroll;
+            padding: 15px;
+            border: none;
+            border-radius: 0;
+            background-color: transparent;
+            margin-top: 15px;
+        }
+
+        .message {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            word-wrap: break-word;
+            font-size: 16px;
+            line-height: 1.4;
+            max-width: 80%;
+            position: relative;
+        }
+        .their-message {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            text-align: right;
+            margin-right: 20%;
+            border-radius: 15px 15px 0 15px;
+            float: right;
+            clear: both;
+        }
+        .my-message {
+            background-color: #00bcd4;
+            color: #fff;
+            text-align: right;
+            margin-left: 20%;
+            border-radius: 15px 15px 15px 0;
+            float: left;
+            clear: both;
+        }
+        
+        #messageInputContainer, #adminMessageInputContainer {
+            display: flex;
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0 0 16px 16px;
+        }
+
+        #messageInput, #adminMessageInput {
+            flex-grow: 1;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 0, 0, 0.4);
+            color: #e0e0e0;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+        #sendMessageBtn, #adminSendMessageBtn {
+            margin-left: 8px;
+            padding: 12px 18px;
+            font-size: 18px;
+            background-color: #000000;
+            border: 2px solid #00bcd4;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Video background style */
+        #backgroundVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            background-size: cover;
+            object-fit: cover;
+        }
+
+        /* Styles for Admin Client/Order Section */
+        .client-item {
+            border: 1px solid #00bcd4;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            text-align: right;
+            background: rgba(0, 188, 212, 0.1);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .client-item:hover {
+            background: rgba(0, 188, 212, 0.2);
+        }
+
+        .client-orders-list {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .client-order-item {
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+            padding: 10px 0;
+            margin-bottom: 5px;
+        }
+        .client-order-item:last-child {
+            border-bottom: none;
+        }
+        
+    </style>
+    <div id="ordersToggle" title="الطلبات والمشتريات"> الطلبات</div>
+    <div id="messagesToggle" title="الرسائل"> تواصل</div>
+    <div id="adminToggle" title="لوحة التحكم"> الأدمن</div>
+
+    <section id="welcome" class="section active container">
+        <header>شركة فور آرت للدعاية والإعلان</header>
+        <button class="productBtn" onclick="showSection('login')">دخول</button>
+    </section>
+
+    <section id="login" class="section container">
+        <div class="backBtn" onclick="showSection('welcome')"> رجوع</div>
+        <header>مرحباً بك</header>
+        <p class="small">سجل بياناتك علشان تقدر ترسل طلباتك</p>
+
+        <input type="tel" id="userPhone" placeholder="رقم التليفون" />
+        <div class="error" id="phoneError"></div>
+        <input type="text" id="userName" placeholder="الاسم" />
+        <div class="error" id="nameError"></div>
+        <input type="email" id="userEmail" placeholder="البريد الإلكتروني (اختياري)" />
+        <div class="error" id="emailError"></div>
+        <div class="error" id="loginError"></div>
+
+        <button id="loginBtn" onclick="userLogin()">دخول</button>
+    </section>
+
+    <section id="adminLoginChoice" class="section container">
+        <div class="backBtn" onclick="showSection('welcome')"> رجوع</div>
+        <header>دخول الأدمن</header>
+        <button class="productBtn" onclick="showSection('mainAdminLogin')">الأدمن الرئيسي</button>
+        <button class="productBtn" onclick="showSection('regularAdminLogin')">أدمن عادي</button>
+    </section>
+
+    <section id="mainAdminLogin" class="section container">
+        <div class="backBtn" onclick="showSection('adminLoginChoice')"> رجوع</div>
+        <header>الأدمن الرئيسي</header>
+        <p class="small">أدخل الكود السري</p>
+        
+        <div id="otp-container">
+            <input type="password" id="mainAdminOTP" placeholder="الكود السري" />
+            <span class="eye" onclick="togglePasswordVisibility('mainAdminOTP')">👁️</span>
+            <div class="error" id="mainAdminOTPError"></div>
+            <button onclick="checkMainAdminLogin()">دخول</button>
+        </div>
+    </section>
+
+    <section id="regularAdminLogin" class="section container">
+        <div class="backBtn" onclick="showSection('adminLoginChoice')"> رجوع</div>
+        <header>دخول أدمن عادي</header>
+        <p class="small">أدخل بيانات دخول الأدمن</p>
+        <input type="text" id="regAdminUsername" placeholder="اسم المستخدم" />
+        <div class="relative">
+            <input type="password" id="regAdminPassword" placeholder="كلمة السر" />
+            <span class="eye" onclick="togglePasswordVisibility('regAdminPassword')">👁️</span>
+        </div>
+        <div class="error" id="regAdminLoginError"></div>
+        <button onclick="checkRegularAdminLogin()">دخول</button>
+    </section>
+
+    <section id="products" class="section container">
+        <div class="backBtn" onclick="showSection('login')"> رجوع</div>
+        <header>4Art</header>
+        <div id="productButtonsContainer"></div>
+    </section>
+
+    <section id="subCategories" class="section container">
+        <div class="backBtn" onclick="showSection('products')"> رجوع</div>
+        <header id="subCategoriesHeader">الأقسام الفرعية</header>
+        <div id="subCategoryButtonsContainer"></div>
+    </section>
+
+    <div id="dynamicSectionsContainer"></div>
+
+    <section id="subCategoryImages" class="section container">
+        <div class="backBtn" onclick="goBackToSubCategory()"> رجوع</div>
+        <header id="subCategoryImagesHeader"></header>
+        <div id="subCategoryImagesList"></div>
+    </section>
+
+    <section id="imageDetail" class="section container">
+        <div class="backBtn" onclick="goBackToSubCategoryImages()"> رجوع</div>
+        <header>تفاصيل المنتج</header>
+        <img id="detailImg" src="" style="width:100%;border-radius:8px;" />
+        <div style="margin-top:12px;">
+            <button id="detailOrderBtn" class="productBtn">اطلب الآن</button>
+            <button id="inquiryHereBtn" class="productBtn" style="background-color:#000000; border:2px solid #5a5a7e; margin-top:12px;">استفسار هنا</button>
+        </div>
+    </section>
+
+    <section id="adminPage" class="section container">
+        <div class="backBtn" onclick="adminLogout()"> خروج من الأدمن</div>
+        <header>لوحة تحكم الأدمن</header>
+        <div id="adminPageButtons"></div>
+    </section>
+
+    <section id="adminManageAdminsSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>إدارة الأدمن</header>
+        <h3>إضافة أدمن جديد</h3>
+        <input type="text" id="newAdminUsername" placeholder="اسم المستخدم" />
+        <div class="relative">
+            <input type="password" id="newAdminPassword" placeholder="كلمة السر" />
+            <span class="eye" onclick="togglePasswordVisibility('newAdminPassword')">👁️</span>
+        </div>
+        <button onclick="addRegularAdmin()">إضافة أدمن</button>
+        <hr>
+        <h4>الأدمن الحاليون</h4>
+        <ul id="adminsList"></ul>
+    </section>
+
+    <section id="adminPermissionsSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>صلاحيات الأدمن</header>
+        <p class="small">حدد الصلاحيات لكل أدمن عادي</p>
+        <div id="adminPermissionsList"></div>
+    </section>
+
+    <section id="adminOrdersSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>طلبات العملاء الجديدة</header>
+        <div id="adminOrdersList"></div>
+    </section>
+
+    <section id="adminPendingOrdersSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>طلبات العملاء المعلَّقة (قيد التنفيذ)</header>
+        <div id="adminPendingOrdersList"></div>
+    </section>
+
+    <section id="adminCompletedOrdersSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>الطلبات المكتملة</header>
+        <div id="adminCompletedOrdersList"></div>
+    </section>
+
+    <section id="adminMessagesSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>الرسائل</header>
+        <div id="chatUsersList"></div>
+    </section>
+    
+    <section id="adminClientOrdersSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>العملاء والطلبات</header>
+        
+        <h3>البحث عن عميل</h3>
+        <p class="small">ابحث بالاسم، رقم التليفون، أو رقم العميل (Phone ID)</p>
+        <input type="text" id="clientSearchInput" placeholder="اسم أو رقم تليفون أو ID" onkeyup="filterClients()" />
+        
+        <hr>
+        
+        <div id="adminClientsListArea">
+            <h4 style="text-align: right;">قائمة العملاء</h4>
+            <div id="filteredClientsList">
+                </div>
+        </div>
+
+        <div id="clientOrdersDetailArea" style="display:none; text-align:right;">
+            <hr>
+            <h4 id="clientOrdersHeader">طلبات العميل: [اسم العميل]</h4>
+            
+            <p class="small">البحث برقم الطلب (Order ID)</p>
+            <input type="text" id="orderSearchInput" placeholder="رقم الطلب" onkeyup="filterClientOrders()" />
+            
+            <div id="currentClientOrdersList" class="client-orders-list">
+                </div>
+        </div>
+
+    </section>
+
+    <section id="adminClientsSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>العملاء المسجلين</header>
+        <ul id="clientList" style="text-align:right;"></ul>
+    </section>
+
+    <section id="adminMainSectionsSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>إدارة الأقسام الرئيسية</header>
+        <h3>إضافة قسم رئيسي جديد</h3>
+        <input type="text" id="newSectionName" placeholder="اسم القسم (مثال: دروع، ميداليات)" />
+        <button onclick="addMainSection()">إضافة قسم رئيسي</button>
+        <h4>الأقسام الرئيسية الحالية</h4>
+        <ul id="mainSectionsList"></ul>
+    </section>
+
+    <section id="adminSubSectionsSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>إدارة الأقسام الفرعية</header>
+        <label class="small">اختر القسم الرئيسي لإضافة قسم فرعي تحته</label>
+        <select id="mainSectionSelect"></select>
+        <h3>إضافة قسم فرعي جديد</h3>
+        <input type="text" id="newSubSectionName" placeholder="اسم القسم الفرعي (مثال: دروع خشب، دروع كريستال)" />
+        <button onclick="addSubSection()">إضافة قسم فرعي</button>
+        <hr>
+        <h4>الأقسام الفرعية الحالية</h4>
+        <div id="subSectionsList"></div>
+    </section>
+
+
+    <section id="adminImagesSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>إدارة صور المنتجات</header>
+        
+        <label class="small">اختر القسم الرئيسي</label>
+        <select id="imageMainCategory" onchange="populateSubCategorySelect()">
+            <option value="">اختر قسماً رئيسياً</option>
+        </select>
+        
+        <label class="small">اختر القسم الفرعي</label>
+        <select id="imageSubCategory">
+            <option value="">اختر قسماً فرعياً</option>
+        </select>
+        
+        <p class="small">تقدر تضيف صورة بواحدة من الطريقتين: رفع ملف أو رابط للصورة</p>
+        <input type="file" id="productImageFile" accept="image/*" />
+        <input type="text" id="productImageUrl" placeholder="أو ضع رابط الصورة هنا" />
+        <button onclick="addImage()">إضافة صورة</button>
+        <h4>الصور الحالية</h4>
+        <div id="imageList" style="text-align:right;"></div>
+    </section>
+
+    <section id="adminBackgroundsSection" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminPage')"> رجوع</div>
+        <header>إدارة الخلفيات</header>
+
+        <label class="small">اختر القسم لتعيين الخلفية له</label>
+        <select id="backgroundTarget" onchange="loadCurrentBackground()">
+            <option value="global_image">الخلفية الموحدة (صورة)</option>
+            <option value="global_video">الخلفية الموحدة (فيديو)</option>
+            <option value="welcome">شاشة الترحيب</option>
+            <option value="login">صفحة تسجيل الدخول</option>
+            <option value="products">صفحة الأقسام</option>
+            <option value="myOrders">صفحة الطلبات</option>
+            <option value="myMessages">صفحة الرسائل</option>
+            <option value="adminPage">لوحة تحكم الأدمن</option>
+            <option value="adminOrdersSection">صفحة إدارة الطلبات الجديدة</option>
+            <option value="adminPendingOrdersSection">صفحة الطلبات المعلَّقة</option>
+            <option value="adminCompletedOrdersSection">صفحة الطلبات المكتملة</option>
+            <option value="adminMessagesSection">صفحة إدارة الرسائل</option>
+            <option value="adminClientOrdersSection">صفحة العملاء والطلبات</option>
+            <option value="adminClientsSection">صفحة العملاء</option>
+            <option value="adminMainSectionsSection">صفحة الأقسام الرئيسية</option>
+            <option value="adminSubSectionsSection">صفحة الأقسام الفرعية</option>
+            <option value="adminImagesSection">صفحة إدارة الصور</option>
+            <option value="adminBackgroundsSection">صفحة الخلفيات</option>
+        </select>
+
+        <hr>
+        
+        <div id="imageControls">
+            <h3>صورة الخلفية</h3>
+            <p class="small">قم برفع صورة جديدة أو ضع رابط لها.</p>
+            <input type="file" id="bgImageFile" accept="image/*" />
+            <input type="text" id="bgImageUrl" placeholder="أو ضع رابط الصورة هنا" />
+            <button onclick="setSpecificBackground('image')">تغيير الخلفية (صورة)</button>
+        </div>
+        
+        <div id="videoControls">
+            <h3>فيديو الخلفية</h3>
+            <p class="small">ضع رابط فيديو (MP4) من موقع خارجي.</p>
+            <input type="text" id="bgVideoUrl" placeholder="رابط الفيديو (mp4)" />
+            <button onclick="setSpecificBackground('video')">تغيير الخلفية (فيديو)</button>
+        </div>
+    </section>
+
+    <section id="myOrders" class="section container">
+        <div class="backBtn" onclick="showSection('products')"> رجوع</div>
+        <header>الطلبات والمشتريات</header>
+        <p id="clientOrderIDDisplay" class="small" style="text-align: right; color: #00bcd4; font-size: 18px; margin-top: -10px;"></p>
+
+        <div class="tabs">
+            <div id="tabPending" class="tab active" onclick="switchOrdersTab('pending')">معلَّق</div>
+            <div id="tabCompleted" class="tab" onclick="switchOrdersTab('completed')">مكتملة</div>
+            <div id="tabCancelled" class="tab" onclick="switchOrdersTab('cancelled')">ملغية</div>
+        </div>
+
+        <div id="ordersContent" style="margin-top:12px; text-align:right;"></div>
+    </section>
+
+    <section id="myMessages" class="section container">
+        <div class="backBtn" onclick="showSection('products')"> رجوع</div>
+        <header>تواصل مع الإدارة</header>
+
+        <div class="tabs">
+            <div id="tabInquiry" class="tab active" onclick="switchChatTab('inquiry')">استفسار</div>
+            <div id="tabComplaint" class="tab" onclick="switchChatTab('complaint')">شكوى</div>
+        </div>
+
+        <div id="messagesContent"></div>
+        <div id="messageInputContainer">
+            <input type="text" id="messageInput" placeholder="اكتب رسالتك..." />
+            <button id="sendMessageBtn">إرسال</button>
+        </div>
+    </section>
+
+    <section id="adminChatWindow" class="section container">
+        <div class="backBtn" onclick="showAdminSection('adminMessagesSection')"> رجوع</div>
+        <header id="adminChatHeader">
+            <button id="adminClientDataBtn" style="font-size:14px; padding:6px 10px;">بيانات العميل</button>
+        </header>
+        <div class="tabs">
+            <div id="adminTabInquiry" class="tab active" onclick="switchAdminChatTab('inquiry')">استفسار</div>
+            <div id="adminTabComplaint" class="tab" onclick="switchAdminChatTab('complaint')">شكوى</div>
+        </div>
+        <div id="adminMessagesContent"></div>
+        <div id="adminMessageInputContainer">
+            <input type="text" id="adminMessageInput" placeholder="اكتب رسالتك..." />
+            <button id="adminSendMessageBtn">إرسال</button>
+        </div>
+    </section>
+
+    <video id="backgroundVideo" autoplay loop muted playsinline></video>
+
+    <script>
+        /* ======= إعدادات وتخزين البيانات ======= */
+        const STORAGE_KEYS = {
+            SECTIONS: '4art_sections_v4', 
+            IMAGES: '4art_images_v4',     
+            ORDERS: '4art_orders_v4',
+            CLIENTS: '4art_clients_v3',
+            CHATS: '4art_chats_v3',
+            ADMINS: '4art_admins_v3',
+            BACKGROUNDS: '4art_backgrounds_v4'
+        };
+        
+        // ** التعديل المطلوب **: بيانات تسجيل دخول الأدمن الرئيسي
+        const mainAdminCredentials = {
+            phone: "01210511112",
+            name: "george",
+            password: "##S$5&90" // كلمة السر الجديدة
+        };
+        
+        const adminPages = [
+            { id: 'adminOrdersSection', name: 'الطلبات الجديدة' },
+            { id: 'adminPendingOrdersSection', name: 'الطلبات المعلَّقة' }, 
+            { id: 'adminCompletedOrdersSection', name: 'الطلبات المكتملة' }, 
+            { id: 'adminMessagesSection', name: 'الرسائل' },
+            { id: 'adminClientOrdersSection', name: 'العملاء والطلبات' }, 
+            { id: 'adminClientsSection', name: 'إدارة العملاء' },
+            { id: 'adminMainSectionsSection', name: 'إدارة الأقسام الرئيسية' },
+            { id: 'adminSubSectionsSection', name: 'إدارة الأقسام الفرعية' },     
+            { id: 'adminImagesSection', name: 'إدارة الصور' },
+            // الأقسام التي تظهر للأدمن الرئيسي فقط
+            { id: 'adminManageAdminsSection', name: 'إدارة الأدمن', mainOnly: true },
+            { id: 'adminPermissionsSection', name: 'صلاحيات الأدمن', mainOnly: true },
+            { id: 'adminBackgroundsSection', name: 'الخلفيات', mainOnly: true }
+        ];
+
+        let sections = JSON.parse(localStorage.getItem(STORAGE_KEYS.SECTIONS)) || {
+            'talabat_ukhra': { id: 'talabat_ukhra', name: 'طلبات أخرى', subsections: {
+                'general_orders': { id: 'general_orders', name: 'طلبات عامة' }
+            }}
+        };
+        
+        let images = JSON.parse(localStorage.getItem(STORAGE_KEYS.IMAGES)) || { 'general_orders': [] };
+        let orders = JSON.parse(localStorage.getItem(STORAGE_KEYS.ORDERS)) || [];
+        let clients = JSON.parse(localStorage.getItem(STORAGE_KEYS.CLIENTS)) || [];
+        let admins = JSON.parse(localStorage.getItem(STORAGE_KEYS.ADMINS)) || [];
+        let chats = JSON.parse(localStorage.getItem(STORAGE_KEYS.CHATS)) || {};
+        
+        let backgrounds = JSON.parse(localStorage.getItem(STORAGE_KEYS.BACKGROUNDS)) || {
+            global_image: null, global_video: null, welcome: null, login: null, products: null, myOrders: null, myMessages: null, adminPage: null,
+            adminOrdersSection: null, adminPendingOrdersSection: null, adminCompletedOrdersSection: null,
+            adminMessagesSection: null, adminClientsSection: null, adminMainSectionsSection: null,
+            adminSubSectionsSection: null, adminImagesSection: null, adminBackgroundsSection: null,
+            adminClientOrdersSection: null
+        };
+
+        let currentUser = null;
+        let loggedInAdmin = null;
+        let currentMainCategory = ''; 
+        let currentSubCategory = '';  
+        let lastCategoryBeforeDetail = 'products';
+        let activeChatId = null;
+        let activeClientChatType = 'inquiry';
+        let activeAdminChatType = 'inquiry';
+        let currentActiveSection = 'welcome';
+        let currentClientForOrders = null; 
+
+        window.onload = function() {
+            renderProductButtons();
+            showSection('welcome'); 
+        };
+
+        function togglePasswordVisibility(id) {
+            const input = document.getElementById(id);
+            input.type = input.type === "password" ? "text" : "password";
+        }
+        
+        function generateId(name) {
+            return name.toLowerCase().replace(/[^a-z0-9]/g, '_').substring(0, 20) + '_' + Date.now().toString().slice(-4);
+        }
+
+        function saveClients() { localStorage.setItem(STORAGE_KEYS.CLIENTS, JSON.stringify(clients)); }
+        function saveChats() { localStorage.setItem(STORAGE_KEYS.CHATS, JSON.stringify(chats)); }
+        function saveOrders() { localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders)); }
+        function saveSections() { localStorage.setItem(STORAGE_KEYS.SECTIONS, JSON.stringify(sections)); }
+        function saveImages() { localStorage.setItem(STORAGE_KEYS.IMAGES, JSON.stringify(images)); }
+        function saveAdmins() { localStorage.setItem(STORAGE_KEYS.ADMINS, JSON.stringify(admins)); }
+        function saveBackgrounds() { localStorage.setItem(STORAGE_KEYS.BACKGROUNDS, JSON.stringify(backgrounds)); }
+
+
+        /* ======= وظائف التنقل والعرض ======= */
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            const el = document.getElementById(id);
+            if (el) el.classList.add('active');
+
+            currentActiveSection = id; 
+            applyBackground(id); 
+            updateNavButtons();
+        }
+
+        function showAdminSection(id) {
+            if (!loggedInAdmin) return showSection('adminLoginChoice');
+            
+            // تحقق من الصلاحيات
+            const pageInfo = adminPages.find(p => p.id === id);
+            if (pageInfo && !loggedInAdmin.isMain && !loggedInAdmin.permissions.includes(id) && !pageInfo.mainOnly) {
+                 alert('ليس لديك صلاحية الوصول لهذا القسم.');
+                 return;
+            }
+            if (pageInfo && pageInfo.mainOnly && !loggedInAdmin.isMain) {
+                 alert('هذا القسم مخصص للأدمن الرئيسي فقط.');
+                 return;
+            }
+            
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            const el = document.getElementById(id);
+            if (el) el.classList.add('active');
+            
+            currentActiveSection = id; 
+            applyBackground(id);
+
+            if (id === 'adminOrdersSection') renderAdminOrdersList();
+            if (id === 'adminPendingOrdersSection') renderAdminPendingOrdersList();
+            if (id === 'adminCompletedOrdersSection') renderAdminCompletedOrdersList();
+            if (id === 'adminMessagesSection') renderAdminChatList();
+            if (id === 'adminClientOrdersSection') initAdminClientOrders(); 
+            if (id === 'adminClientsSection') loadClients();
+            if (id === 'adminMainSectionsSection') loadMainSectionsList();
+            if (id === 'adminSubSectionsSection') loadSubSectionsAdmin();
+            if (id === 'adminImagesSection') {
+                populateImageCategorySelects();
+                loadImagesList();
+            }
+            if (id === 'adminManageAdminsSection' && loggedInAdmin.isMain) loadAdminsList();
+            if (id === 'adminPermissionsSection' && loggedInAdmin.isMain) loadAdminPermissions();
+            if (id === 'adminBackgroundsSection' && loggedInAdmin.isMain) loadBackgroundTargetOptions();
+        }
+
+        function updateNavButtons() {
+            // ** تم حذف adminLoginToggle **
+            const ordersToggle = document.getElementById('ordersToggle');
+            const messagesToggle = document.getElementById('messagesToggle');
+            const adminToggle = document.getElementById('adminToggle');
+        
+            if (currentUser) {
+                ordersToggle.style.display = 'block';
+                messagesToggle.style.display = 'block';
+                adminToggle.style.display = 'none';
+            } else if (loggedInAdmin) {
+                ordersToggle.style.display = 'none';
+                messagesToggle.style.display = 'none';
+                adminToggle.style.display = 'block';
+            } else {
+                // عند الخروج من الأدمن أو العميل، نرجع لشاشة الترحيب
+                ordersToggle.style.display = 'none';
+                messagesToggle.style.display = 'none';
+                adminToggle.style.display = 'none';
+            }
+        }
+
+        function adminLogout() {
+            loggedInAdmin = null;
+            currentUser = null;
+            showSection('welcome');
+        }
+
+        function checkPermissions(pageId) {
+            if (!loggedInAdmin) return false;
+            if (loggedInAdmin.isMain) return true;
+            return loggedInAdmin.permissions.includes(pageId);
+        }
+
+        // Event Listeners for Nav buttons
+        document.getElementById('ordersToggle').addEventListener('click', () => { 
+            if (currentUser) {
+                showSection('myOrders'); 
+                document.getElementById('clientOrderIDDisplay').textContent = `رقم العميل (ID): ${currentUser.phone}`;
+                switchOrdersTab('pending'); 
+            }
+        });
+        document.getElementById('messagesToggle').addEventListener('click', () => { 
+            if (currentUser) { showSection('myMessages'); switchChatTab('inquiry'); } 
+            else if (loggedInAdmin) { showAdminSection('adminMessagesSection'); } 
+            else { alert('يجب تسجيل الدخول لاستخدام هذه الميزة.'); showSection('login'); }
+        });
+        document.getElementById('adminToggle').addEventListener('click', () => {
+            if (loggedInAdmin) {
+                showSection('adminPage');
+                const adminPageButtons = document.getElementById('adminPageButtons');
+                adminPageButtons.innerHTML = '';
+                
+                // دمج الأزرار المتاحة للأدمن الرئيسي والعادي
+                adminPages.forEach(page => {
+                    if (page.mainOnly && !loggedInAdmin.isMain) return; // تخطي أقسام الأدمن الرئيسي إذا لم يكن أدمن رئيسي
+                    if (!page.mainOnly && !loggedInAdmin.isMain && !loggedInAdmin.permissions.includes(page.id)) return; // تخطي الأقسام العادية إذا لم يكن لديه صلاحية
+                    
+                    const btn = document.createElement('button');
+                    btn.className = 'productBtn';
+                    btn.textContent = page.name;
+                    btn.onclick = () => showAdminSection(page.id);
+                    adminPageButtons.appendChild(btn);
+                });
+            }
+        });
+
+        /* ======= تسجيل دخول العميل / الأدمن ======= */
+        function validateUserInputs() {
+            const phone = document.getElementById('userPhone').value.trim();
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            document.getElementById('phoneError').textContent = '';
+            document.getElementById('nameError').textContent = '';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('loginError').textContent = '';
+            
+            let valid = true;
+            if (!/^\d{11}$/.test(phone)) { document.getElementById('phoneError').textContent = 'رقم تليفون غير صحيح (11 رقم)'; valid = false; }
+            if (name.length < 2) { document.getElementById('nameError').textContent = 'ادخل اسم صحيح'; valid = false; }
+            if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('emailError').textContent = 'ايميل غير صحيح'; valid = false; }
+            
+            return valid;
+        }
+
+        function userLogin() {
+            const phone = document.getElementById('userPhone').value.trim();
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            
+            if (!validateUserInputs()) {
+                document.getElementById('loginError').textContent = 'يرجى إدخال بيانات صحيحة.';
+                return;
+            }
+            
+            // ** التعديل المطلوب **: التحقق من بيانات الأدمن الرئيسي للدخول لقائمة الأدمن
+            if (phone === mainAdminCredentials.phone && name.toLowerCase() === mainAdminCredentials.name.toLowerCase()) {
+                document.getElementById('loginError').textContent = '';
+                showSection('adminLoginChoice'); 
+                return;
+            }
+
+            // تسجيل دخول العميل العادي
+            currentUser = { phone, name, email };
+            const existingClient = clients.find(c => c.phone === currentUser.phone);
+            if (!existingClient) {
+                clients.push(currentUser);
+                saveClients();
+            }
+            
+            if (!chats[currentUser.phone]) {
+                chats[currentUser.phone] = {
+                    clientName: currentUser.name,
+                    clientId: currentUser.phone,
+                    chats: { inquiry: [], complaint: [] },
+                    newMessages: { inquiry: false, complaint: false }
+                };
+                saveChats();
+            }
+
+            showSection('products');
+            renderProductButtons();
+        }
+        
+        function checkMainAdminLogin() {
+            const otp = document.getElementById('mainAdminOTP').value.trim();
+            document.getElementById('mainAdminOTPError').textContent = '';
+            
+            // ** التعديل المطلوب **: استخدام كلمة السر الجديدة
+            if (otp === mainAdminCredentials.password) {
+                loggedInAdmin = { isMain: true, username: 'main-admin', permissions: adminPages.map(p => p.id) };
+                showSection('adminPage');
+                document.getElementById('adminToggle').click(); 
+            } else {
+                document.getElementById('mainAdminOTPError').textContent = 'الكود السري غير صحيح.';
+            }
+        }
+
+        function checkRegularAdminLogin() {
+            const username = document.getElementById('regAdminUsername').value.trim();
+            const password = document.getElementById('regAdminPassword').value.trim();
+            document.getElementById('regAdminLoginError').textContent = '';
+            
+            const admin = admins.find(a => a.username === username && a.password === password);
+            
+            if (admin) {
+                loggedInAdmin = admin;
+                showSection('adminPage');
+                document.getElementById('adminToggle').click(); 
+            } else {
+                document.getElementById('regAdminLoginError').textContent = 'اسم المستخدم أو كلمة السر غير صحيحة.';
+            }
+        }
+
+        /* ======= إدارة الأدمن وصلاحياتهم (لم تتغير) ======= */
+        function addRegularAdmin() {
+            const username = document.getElementById('newAdminUsername').value.trim();
+            const password = document.getElementById('newAdminPassword').value.trim();
+            if (username && password) {
+                if (admins.some(a => a.username === username)) {
+                    alert('اسم المستخدم موجود بالفعل.');
+                    return;
+                }
+                admins.push({ username, password, isMain: false, permissions: [] });
+                saveAdmins();
+                document.getElementById('newAdminUsername').value = '';
+                document.getElementById('newAdminPassword').value = '';
+                loadAdminsList();
+                loadAdminPermissions();
+                alert('تم إضافة الأدمن بنجاح.');
+            } else {
+                alert('الرجاء إدخال اسم المستخدم وكلمة السر.');
+            }
+        }
+
+        function loadAdminsList() {
+            const list = document.getElementById('adminsList');
+            list.innerHTML = '';
+            admins.filter(a => !a.isMain).forEach(admin => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${admin.username} 
+                    <button class="delete-btn" style="margin-right: 10px;" onclick="deleteAdmin('${admin.username}')">حذف</button>
+                `;
+                list.appendChild(li);
+            });
+            if (admins.filter(a => !a.isMain).length === 0) {
+                list.innerHTML = '<p class="small">لا يوجد أدمن عادي مسجل.</p>';
+            }
+        }
+
+        function deleteAdmin(username) {
+            if (confirm(`هل أنت متأكد من حذف الأدمن ${username}؟`)) {
+                admins = admins.filter(a => a.username !== username);
+                saveAdmins();
+                loadAdminsList();
+                loadAdminPermissions();
+            }
+        }
+
+        function loadAdminPermissions() {
+            const list = document.getElementById('adminPermissionsList');
+            list.innerHTML = '';
+
+            admins.filter(a => !a.isMain).forEach(admin => {
+                const div = document.createElement('div');
+                div.className = 'admin-panel';
+                div.innerHTML = `<h4>صلاحيات: ${admin.username}</h4>`;
+                
+                adminPages.filter(p => !p.mainOnly).forEach(page => { // عرض الأقسام التي ليست خاصة بالرئيسي فقط
+                    const checked = admin.permissions.includes(page.id) ? 'checked' : '';
+                    div.innerHTML += `
+                        <label style="display: block; margin-right: 15px;">
+                            <input type="checkbox" ${checked} onchange="updateAdminPermission('${admin.username}', '${page.id}', this.checked)">
+                            ${page.name}
+                        </label>
+                    `;
+                });
+                list.appendChild(div);
+                list.appendChild(document.createElement('hr'));
+            });
+
+            if (admins.filter(a => !a.isMain).length === 0) {
+                list.innerHTML = '<p class="small">لا يوجد أدمن عادي لتعيين الصلاحيات له.</p>';
+            }
+        }
+
+        function updateAdminPermission(username, pageId, isChecked) {
+            const admin = admins.find(a => a.username === username);
+            if (admin) {
+                if (isChecked) {
+                    if (!admin.permissions.includes(pageId)) admin.permissions.push(pageId);
+                } else {
+                    admin.permissions = admin.permissions.filter(id => id !== pageId);
+                }
+                saveAdmins();
+            }
+        }
+
+        /* ======= إدارة الأقسام (Main & Sub) (لم تتغير) ======= */
+        function addMainSection() {
+            const name = document.getElementById('newSectionName').value.trim();
+            if (name) {
+                const id = generateId(name);
+                sections[id] = { id, name, subsections: {} };
+                saveSections();
+                document.getElementById('newSectionName').value = '';
+                loadMainSectionsList();
+                renderProductButtons();
+                populateImageCategorySelects();
+                alert('تم إضافة القسم الرئيسي.');
+            }
+        }
+
+        function loadMainSectionsList() {
+            const list = document.getElementById('mainSectionsList');
+            list.innerHTML = '';
+            Object.values(sections).forEach(section => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${section.name} (ID: ${section.id})
+                    <button class="delete-btn" style="margin-right: 10px;" onclick="deleteMainSection('${section.id}')">حذف</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        function deleteMainSection(sectionId) {
+            if (confirm('هل أنت متأكد من حذف هذا القسم؟ سيتم حذف جميع الأقسام الفرعية والصور المتعلقة به.')) {
+                Object.keys(sections[sectionId].subsections).forEach(subId => {
+                    delete images[subId];
+                });
+                delete sections[sectionId];
+                saveSections();
+                saveImages();
+                loadMainSectionsList();
+                loadSubSectionsAdmin();
+                renderProductButtons();
+                populateImageCategorySelects();
+            }
+        }
+
+        function addSubSection() {
+            const mainId = document.getElementById('mainSectionSelect').value;
+            const subName = document.getElementById('newSubSectionName').value.trim();
+            if (mainId && subName) {
+                const subId = generateId(subName);
+                sections[mainId].subsections[subId] = { id: subId, name: subName };
+                images[subId] = []; 
+                saveSections();
+                saveImages();
+                document.getElementById('newSubSectionName').value = '';
+                loadSubSectionsAdmin();
+                populateImageCategorySelects();
+                alert('تم إضافة القسم الفرعي.');
+            } else {
+                alert('الرجاء اختيار قسم رئيسي وإدخال اسم القسم الفرعي.');
+            }
+        }
+
+        function loadSubSectionsAdmin() {
+            const mainSelect = document.getElementById('mainSectionSelect');
+            const listDiv = document.getElementById('subSectionsList');
+            mainSelect.innerHTML = '<option value="">اختر قسماً رئيسياً</option>';
+            listDiv.innerHTML = '';
+
+            Object.values(sections).forEach(mainSection => {
+                const mainOption = document.createElement('option');
+                mainOption.value = mainSection.id;
+                mainOption.textContent = mainSection.name;
+                mainSelect.appendChild(mainOption);
+
+                const ul = document.createElement('ul');
+                ul.style.textAlign = 'right';
+                ul.innerHTML = `<h4>الأقسام الفرعية في "${mainSection.name}"</h4>`;
+                
+                Object.values(mainSection.subsections).forEach(subSection => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        ${subSection.name} (ID: ${subSection.id})
+                        <button class="delete-btn" style="margin-right: 10px;" onclick="deleteSubSection('${mainSection.id}', '${subSection.id}')">حذف</button>
+                    `;
+                    ul.appendChild(li);
+                });
+                listDiv.appendChild(ul);
+                listDiv.appendChild(document.createElement('hr'));
+            });
+        }
+
+        function deleteSubSection(mainId, subId) {
+            if (confirm('هل أنت متأكد من حذف هذا القسم الفرعي؟ سيتم حذف جميع الصور المتعلقة به.')) {
+                delete sections[mainId].subsections[subId];
+                delete images[subId];
+                saveSections();
+                saveImages();
+                loadSubSectionsAdmin();
+                populateImageCategorySelects();
+                renderProductButtons();
+            }
+        }
+
+        /* ======= واجهة المستخدم والمنتجات (لم تتغير) ======= */
+        function renderProductButtons() {
+            const container = document.getElementById('productButtonsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            Object.values(sections).forEach(section => {
+                const btn = document.createElement('button');
+                btn.className = 'productBtn';
+                btn.textContent = section.name;
+                btn.onclick = () => showSubCategories(section.id);
+                container.appendChild(btn);
+            });
+        }
+
+        function showSubCategories(mainId) {
+            currentMainCategory = mainId;
+            const mainSection = sections[mainId];
+            document.getElementById('subCategoriesHeader').textContent = mainSection.name;
+            const container = document.getElementById('subCategoryButtonsContainer');
+            container.innerHTML = '';
+            
+            Object.values(mainSection.subsections).forEach(sub => {
+                const btn = document.createElement('button');
+                btn.className = 'productBtn';
+                btn.textContent = sub.name;
+                btn.onclick = () => showSubCategoryImages(sub.id);
+                container.appendChild(btn);
+            });
+            showSection('subCategories');
+        }
+
+        function showSubCategoryImages(subId) {
+            currentSubCategory = subId;
+            lastCategoryBeforeDetail = 'subCategoryImages';
+            
+            let subName = '';
+            let mainName = '';
+            for (const mainKey in sections) {
+                if (sections[mainKey].subsections[subId]) {
+                    subName = sections[mainKey].subsections[subId].name;
+                    mainName = sections[mainKey].name;
+                    break;
+                }
+            }
+
+            document.getElementById('subCategoryImagesHeader').textContent = `${mainName} / ${subName}`;
+            const listDiv = document.getElementById('subCategoryImagesList');
+            listDiv.innerHTML = '';
+            
+            const subImages = images[subId] || [];
+            if (subImages.length === 0) {
+                listDiv.innerHTML = '<p>لا توجد منتجات في هذا القسم حالياً.</p>';
+            } else {
+                subImages.forEach(img => {
+                    const div = document.createElement('div');
+                    div.className = 'thumb-inline';
+                    div.onclick = () => showImageDetail(img);
+                    div.innerHTML = `<img src="${img.url}" alt="صورة منتج" />`;
+                    listDiv.appendChild(div);
+                });
+            }
+            showSection('subCategoryImages');
+        }
+
+        function goBackToSubCategory() {
+            showSubCategories(currentMainCategory);
+        }
+
+        function showImageDetail(img) {
+            const detailImg = document.getElementById('detailImg');
+            detailImg.src = img.url;
+            
+            document.getElementById('detailOrderBtn').onclick = () => createOrder(img.url);
+            document.getElementById('inquiryHereBtn').onclick = () => startInquiry(img.url);
+            
+            showSection('imageDetail');
+        }
+        
+        function goBackToSubCategoryImages() {
+            showSubCategoryImages(currentSubCategory);
+        }
+
+        /* ======= إدارة المنتجات (الصور) (لم تتغير) ======= */
+        function populateImageCategorySelects() {
+            const mainSelect = document.getElementById('imageMainCategory');
+            const subSelect = document.getElementById('imageSubCategory');
+            
+            const currentMain = mainSelect.value;
+            
+            mainSelect.innerHTML = '<option value="">اختر قسماً رئيسياً</option>';
+            Object.values(sections).forEach(section => {
+                const option = document.createElement('option');
+                option.value = section.id;
+                option.textContent = section.name;
+                mainSelect.appendChild(option);
+            });
+
+            mainSelect.value = currentMain;
+            populateSubCategorySelect();
+        }
+
+        function populateSubCategorySelect() {
+            const mainId = document.getElementById('imageMainCategory').value;
+            const subSelect = document.getElementById('imageSubCategory');
+            subSelect.innerHTML = '<option value="">اختر قسماً فرعياً</option>';
+            
+            if (mainId && sections[mainId]) {
+                Object.values(sections[mainId].subsections).forEach(sub => {
+                    const option = document.createElement('option');
+                    option.value = sub.id;
+                    option.textContent = sub.name;
+                    subSelect.appendChild(option);
+                });
+            }
+        }
+
+        function fileToUrl(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function addImage() {
+            const subId = document.getElementById('imageSubCategory').value;
+            const fileInput = document.getElementById('productImageFile');
+            const urlInput = document.getElementById('productImageUrl');
+            let imageUrl = urlInput.value.trim();
+
+            if (!subId) { alert('الرجاء اختيار قسم فرعي.'); return; }
+
+            if (fileInput.files.length > 0) {
+                try {
+                    imageUrl = await fileToUrl(fileInput.files[0]);
+                } catch (error) {
+                    alert('خطأ في قراءة ملف الصورة.');
+                    return;
+                }
+            }
+            
+            if (imageUrl) {
+                if (!images[subId]) { images[subId] = []; }
+                images[subId].push({ url: imageUrl, id: generateId('img') });
+                saveImages();
+                fileInput.value = '';
+                urlInput.value = '';
+                loadImagesList(subId);
+                alert('تم إضافة الصورة بنجاح.');
+            } else {
+                alert('الرجاء إدخال رابط أو رفع ملف صورة.');
+            }
+        }
+
+        function loadImagesList(subId = null) {
+            const listDiv = document.getElementById('imageList');
+            listDiv.innerHTML = '';
+            
+            const selectedSubId = subId || document.getElementById('imageSubCategory').value;
+
+            if (selectedSubId && images[selectedSubId]) {
+                images[selectedSubId].forEach(img => {
+                    const div = document.createElement('div');
+                    div.className = 'thumb-inline';
+                    div.innerHTML = `
+                        <img src="${img.url}" alt="صورة منتج" />
+                        <button class="delete-btn" style="padding: 5px 8px; font-size: 14px;" onclick="deleteImage('${selectedSubId}', '${img.id}')">حذف</button>
+                    `;
+                    listDiv.appendChild(div);
+                });
+                if (images[selectedSubId].length === 0) {
+                    listDiv.innerHTML = '<p class="small">لا توجد صور في هذا القسم.</p>';
+                }
+            } else {
+                listDiv.innerHTML = '<p class="small">الرجاء اختيار قسم فرعي لعرض الصور.</p>';
+            }
+        }
+
+        function deleteImage(subId, imgId) {
+            if (confirm('هل أنت متأكد من حذف هذه الصورة؟')) {
+                images[subId] = images[subId].filter(img => img.id !== imgId);
+                saveImages();
+                loadImagesList(subId);
+            }
+        }
+
+        /* ======= إدارة العملاء (Clients) (لم تتغير) ======= */
+        function loadClients() {
+            const list = document.getElementById('clientList');
+            list.innerHTML = '';
+            
+            clients.forEach(client => {
+                const totalOrders = orders.filter(o => o.clientId === client.phone).length;
+                const li = document.createElement('li');
+                li.style.borderBottom = '1px dashed #333';
+                li.style.paddingBottom = '10px';
+                li.style.marginTop = '10px';
+                li.innerHTML = `
+                    <p><strong>الاسم:</strong> ${client.name}</p>
+                    <p><strong>التليفون:</strong> ${client.phone}</p>
+                    <p><strong>الإيميل:</strong> ${client.email || 'لا يوجد'}</p>
+                    <p><strong>عدد الطلبات:</strong> ${totalOrders}</p>
+                    <button style="font-size: 14px; padding: 5px 8px; margin-top: 5px;" onclick="alert('عرض الطلبات لعميل رقم ${client.phone} (تحتاج إلى تطوير واجهة خاصة).')">عرض الطلبات</button>
+                `;
+                list.appendChild(li);
+            });
+        }
+        
+        /* ======= إدارة الطلبات (Orders) - المنطق المعدل ======= */
+        function getStatusText(status) {
+            switch (status) {
+                case 'new': return 'جديد (في انتظار المراجعة)';
+                case 'pending': return 'معلَّق';
+                case 'in_progress': return 'جاري التنفيذ';
+                case 'completed': return 'مكتمل';
+                case 'cancelled': return 'ملغي';
+                default: return status;
+            }
+        }
+
+        function createOrder(imageUrl) {
+            if (!currentUser) { alert('يجب تسجيل الدخول لتقديم طلب.'); showSection('login'); return; }
+            
+            const newOrder = {
+                id: generateId('ord'),
+                clientId: currentUser.phone,
+                clientName: currentUser.name,
+                imageUrl: imageUrl,
+                status: 'new', // تبدأ كـ "جديد"
+                date: new Date().toLocaleDateString('ar-EG')
+            };
+            orders.push(newOrder);
+            saveOrders();
+            alert('تم إرسال طلبك بنجاح. سيتم مراجعته والتواصل معك قريباً.');
+        }
+
+        // **وظيفة العميل: عرض الطلبات حسب الحالة (معدلة لإظهار ID العميل ورقم الطلب)**
+        function switchOrdersTab(status) {
+            if (!currentUser) return; // تحقق احتياطي
+            
+            document.querySelectorAll('#tabPending, #tabCompleted, #tabCancelled').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(`tab${status.charAt(0).toUpperCase() + status.slice(1)}`).classList.add('active');
+            
+            const content = document.getElementById('ordersContent');
+            content.innerHTML = '';
+            
+            // إظهار ID العميل
+            document.getElementById('clientOrderIDDisplay').textContent = `رقم العميل (ID): ${currentUser.phone}`;
+
+            let filterStatuses = [];
+            if (status === 'pending') {
+                 // العميل يرى الـ 'new' والـ 'pending' والـ 'in_progress' كـ 'معلَّق' أو 'جاري التنفيذ'
+                 filterStatuses = ['new', 'pending', 'in_progress'];
+            } else {
+                 filterStatuses = [status];
+            }
+            
+            const clientOrders = orders.filter(o => 
+                o.clientId === currentUser.phone && filterStatuses.includes(o.status)
+            );
+
+            if (clientOrders.length === 0) {
+                content.innerHTML = `<p class="small">لا توجد طلبات في هذه الحالة حالياً.</p>`;
+                return;
+            }
+
+            clientOrders.forEach(order => {
+                const item = document.createElement('div');
+                item.className = 'order-item';
+                item.innerHTML = `
+                    <p><strong>كود الطلب:</strong> <span style="color:#00bcd4;">${order.id}</span></p>
+                    <p><strong>تاريخ الطلب:</strong> ${order.date}</p>
+                    <p><strong>صورة المنتج:</strong> <img src="${order.imageUrl}" style="max-width: 100px; display: block; margin: 5px 0 10px auto; border-radius: 5px;"/></p>
+                    <p><strong>الحالة:</strong> ${getStatusText(order.status)}</p>
+                `;
+                content.appendChild(item);
+            });
+        }
+        
+        // **وظيفة الأدمن: عرض الطلبات الجديدة (New) (لم تتغير)**
+        function renderAdminOrdersList() {
+            const listDiv = document.getElementById('adminOrdersList');
+            listDiv.innerHTML = '';
+            
+            const newOrders = orders.filter(o => o.status === 'new');
+            
+            if (newOrders.length === 0) {
+                listDiv.innerHTML = '<p class="small">لا توجد طلبات جديدة.</p>';
+                return;
+            }
+
+            newOrders.forEach(order => {
+                const client = clients.find(c => c.phone === order.clientId) || { name: 'عميل غير معروف' };
+                const item = document.createElement('div');
+                item.className = 'order-item';
+                item.innerHTML = `
+                    <p><strong>كود:</strong> ${order.id}</p>
+                    <p><strong>العميل:</strong> ${client.name} (${order.clientId})</p>
+                    <p><strong>التاريخ:</strong> ${order.date}</p>
+                    <p><strong>المنتج:</strong> <img src="${order.imageUrl}" style="max-width: 80px; display: block; margin: 5px 0 10px auto; border-radius: 5px;"/></p>
+                    <div class="order-actions" style="margin-top: 10px;">
+                        <button onclick="updateOrderStatus('${order.id}', 'pending')">تعليق/بدء التنفيذ</button> 
+                        <button onclick="updateOrderStatus('${order.id}', 'completed')">إكمال</button>
+                        <button class="delete-btn" onclick="updateOrderStatus('${order.id}', 'cancelled')">إلغاء</button>
+                    </div>
+                `;
+                listDiv.appendChild(item);
+            });
+        }
+        
+        // **وظيفة الأدمن: عرض الطلبات المعلَّقة (Pending / In_Progress) (لم تتغير)**
+        function renderAdminPendingOrdersList() {
+            const listDiv = document.getElementById('adminPendingOrdersList');
+            listDiv.innerHTML = '';
+            
+            const pendingOrders = orders.filter(o => o.status === 'pending' || o.status === 'in_progress');
+            
+            if (pendingOrders.length === 0) {
+                listDiv.innerHTML = '<p class="small">لا توجد طلبات معلَّقة أو قيد التنفيذ.</p>';
+                return;
+            }
+
+            pendingOrders.forEach(order => {
+                const client = clients.find(c => c.phone === order.clientId) || { name: 'عميل غير معروف' };
+                const item = document.createElement('div');
+                item.className = 'order-item';
+                item.innerHTML = `
+                    <p><strong>كود:</strong> ${order.id}</p>
+                    <p><strong>الحالة:</strong> ${getStatusText(order.status)}</p>
+                    <p><strong>العميل:</strong> ${client.name} (${order.clientId})</p>
+                    <p><strong>المنتج:</strong> <img src="${order.imageUrl}" style="max-width: 80px; display: block; margin: 5px 0 10px auto; border-radius: 5px;"/></p>
+                    <div class="order-actions" style="margin-top: 10px;">
+                        ${order.status === 'pending' ? `<button onclick="updateOrderStatus('${order.id}', 'in_progress')">بدء التنفيذ</button>` : `<button onclick="updateOrderStatus('${order.id}', 'pending')">تعليق مؤقت</button>`}
+                        <button onclick="updateOrderStatus('${order.id}', 'completed')">إكمال</button>
+                        <button class="delete-btn" onclick="updateOrderStatus('${order.id}', 'cancelled')">إلغاء</button>
+                    </div>
+                `;
+                listDiv.appendChild(item);
+            });
+        }
+        
+        // **وظيفة الأدمن: عرض الطلبات المكتملة (Completed) (لم تتغير)**
+        function renderAdminCompletedOrdersList() {
+            const listDiv = document.getElementById('adminCompletedOrdersSection');
+            listDiv.innerHTML = '';
+            
+            const completedOrders = orders.filter(o => o.status === 'completed');
+            
+            if (completedOrders.length === 0) {
+                listDiv.innerHTML = '<p class="small">لا توجد طلبات مكتملة.</p>';
+                return;
+            }
+
+            completedOrders.forEach(order => {
+                const client = clients.find(c => c.phone === order.clientId) || { name: 'عميل غير معروف' };
+                const item = document.createElement('div');
+                item.className = 'order-item';
+                item.innerHTML = `
+                    <p><strong>كود:</strong> ${order.id}</p>
+                    <p><strong>الحالة:</strong> ${getStatusText(order.status)}</p>
+                    <p><strong>العميل:</strong> ${client.name} (${order.clientId})</p>
+                    <p><strong>التاريخ:</strong> ${order.date}</p>
+                    <p><strong>المنتج:</strong> <img src="${order.imageUrl}" style="max-width: 80px; display: block; margin: 5px 0 10px auto; border-radius: 5px;"/></p>
+                `;
+                listDiv.appendChild(item);
+            });
+        }
+
+        // **وظيفة تحديث الحالة - المنطق المركزي (لم تتغير)**
+        function updateOrderStatus(orderId, newStatus) {
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                if (newStatus === 'cancelled' && !confirm(`هل أنت متأكد من إلغاء الطلب رقم ${orderId}؟ هذا الإجراء لا يمكن التراجع عنه.`)) {
+                    return;
+                }
+                
+                order.status = newStatus;
+                saveOrders();
+                
+                alert(`تم تحديث حالة الطلب ${orderId} إلى ${getStatusText(newStatus)}.`);
+                
+                // تحديث العرض بناءً على القسم النشط للأدمن
+                if (currentActiveSection === 'adminOrdersSection') renderAdminOrdersList();
+                if (currentActiveSection === 'adminPendingOrdersSection') renderAdminPendingOrdersList();
+                if (currentActiveSection === 'adminCompletedOrdersSection') renderAdminCompletedOrdersList();
+                // تحديث عرض الطلبات داخل قسم العملاء والطلبات إذا كان العميل الحالي هو نفسه
+                if (currentActiveSection === 'adminClientOrdersSection' && currentClientForOrders && currentClientForOrders.phone === order.clientId) {
+                     displayClientOrders(currentClientForOrders);
+                }
+                // تحديث عرض الطلبات للعميل إذا كان العميل مسجلاً الدخول
+                if (currentUser && currentUser.phone === order.clientId && currentActiveSection === 'myOrders') {
+                    const activeTab = document.querySelector('#myOrders .tab.active').id.replace('tab', '').toLowerCase();
+                    switchOrdersTab(activeTab);
+                }
+            }
+        }
+
+        /* ======= نظام الدردشة (Chats) (لم تتغير) ======= */
+        function startInquiry(imageUrl) {
+            if (!currentUser) { alert('يجب تسجيل الدخول للمراسلة.'); showSection('login'); return; }
+            
+            const message = `أستفسر عن المنتج التالي: ${imageUrl}`;
+            sendMessage(message, 'inquiry', true);
+            alert('تم إرسال استفسارك. سيتم الرد عليك قريباً في قسم "تواصل".');
+        }
+
+        function renderMessages(contentId, chatId, type) {
+            const content = document.getElementById(contentId);
+            content.innerHTML = '';
+            
+            const chatObj = chats[chatId];
+            if (!chatObj) return;
+
+            const messages = chatObj.chats[type];
+
+            messages.forEach(msg => {
+                const div = document.createElement('div');
+                div.className = 'message ' + (msg.sender === 'user' ? 'my-message' : 'their-message');
+                div.textContent = msg.text;
+                content.appendChild(div);
+            });
+            content.scrollTop = content.scrollHeight; 
+        }
+
+        function switchChatTab(type) {
+            document.querySelectorAll('#tabInquiry, #tabComplaint').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(`tab${type.charAt(0).toUpperCase() + type.slice(1)}`).classList.add('active');
+            activeClientChatType = type;
+            if (currentUser) { renderMessages('messagesContent', currentUser.phone, type); }
+        }
+
+        function sendMessage(text, type, isUser = true) {
+            if (!currentUser) return;
+            const msg = {
+                text: text || document.getElementById('messageInput').value.trim(),
+                sender: isUser ? 'user' : 'admin',
+                timestamp: Date.now()
+            };
+
+            if (!msg.text) return;
+            
+            const chatId = currentUser.phone;
+            if (!chats[chatId]) {
+                 chats[chatId] = { clientName: currentUser.name, clientId: chatId, chats: { inquiry: [], complaint: [] }, newMessages: { inquiry: false, complaint: false } };
+            }
+
+            chats[chatId].chats[type].push(msg);
+            chats[chatId].newMessages[type] = isUser; 
+            saveChats();
+            
+            document.getElementById('messageInput').value = '';
+            renderMessages('messagesContent', chatId, type);
+        }
+
+        document.getElementById('sendMessageBtn').addEventListener('click', () => sendMessage(null, activeClientChatType, true));
+
+        // Admin Chat Functions (لم تتغير)
+        function renderAdminChatList() {
+            const listDiv = document.getElementById('chatUsersList');
+            listDiv.innerHTML = '';
+            
+            const chatEntries = Object.values(chats).sort((a, b) => {
+                const aNew = a.newMessages.inquiry || a.newMessages.complaint;
+                const bNew = b.newMessages.inquiry || b.newMessages.complaint;
+                if (aNew && !bNew) return -1;
+                if (!aNew && bNew) return 1;
+                return 0;
+            });
+            
+            if (chatEntries.length === 0) {
+                 listDiv.innerHTML = '<p class="small">لا يوجد عملاء بدأوا محادثة بعد.</p>';
+                 return;
+            }
+
+            chatEntries.forEach(chat => {
+                const hasNew = chat.newMessages.inquiry || chat.newMessages.complaint;
+                const div = document.createElement('div');
+                div.className = 'order-item';
+                div.style.cursor = 'pointer';
+                div.style.borderColor = hasNew ? '#ff8c00' : 'rgba(255, 255, 255, 0.2)';
+                div.onclick = () => openAdminChat(chat.clientId);
+                div.innerHTML = `
+                    <p><strong>العميل:</strong> ${chat.clientName} (${chat.clientId})</p>
+                    <p class="small" style="color:${chat.newMessages.inquiry ? '#00bcd4' : '#888'};">استفسار: ${chat.newMessages.inquiry ? 'رسائل جديدة' : 'لا جديد'}</p>
+                    <p class="small" style="color:${chat.newMessages.complaint ? '#ff5252' : '#888'};">شكوى: ${chat.newMessages.complaint ? 'رسائل جديدة' : 'لا جديد'}</p>
+                `;
+                listDiv.appendChild(div);
+            });
+        }
+        
+        function openAdminChat(clientId) {
+            activeChatId = clientId;
+            const chatObj = chats[clientId];
+            const client = clients.find(c => c.phone === clientId);
+
+            document.getElementById('adminChatHeader').innerHTML = `
+                ${chatObj.clientName}
+                <button id="adminClientDataBtn" style="font-size:14px; padding:6px 10px;" onclick="alert('الاسم: ${client.name}\\nالتليفون: ${client.phone}\\nالإيميل: ${client.email || 'لا يوجد'}')">بيانات العميل</button>
+            `;
+            
+            activeAdminChatType = (chatObj.newMessages.inquiry || chatObj.chats.inquiry.length > 0) ? 'inquiry' : 'complaint';
+            
+            document.getElementById('adminTabInquiry').classList.remove('active');
+            document.getElementById('adminTabComplaint').classList.remove('active');
+            document.getElementById(`adminTab${activeAdminChatType.charAt(0).toUpperCase() + activeAdminChatType.slice(1)}`).classList.add('active');
+
+            renderMessages('adminMessagesContent', clientId, activeAdminChatType);
+            showAdminSection('adminChatWindow');
+            
+            if (chatObj.newMessages[activeAdminChatType]) {
+                chatObj.newMessages[activeAdminChatType] = false;
+                saveChats();
+                renderAdminChatList();
+            }
+        }
+        
+        function switchAdminChatTab(type) {
+            document.querySelectorAll('#adminTabInquiry, #adminTabComplaint').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(`adminTab${type.charAt(0).toUpperCase() + type.slice(1)}`).classList.add('active');
+            activeAdminChatType = type;
+            renderMessages('adminMessagesContent', activeChatId, type);
+            
+            if (chats[activeChatId].newMessages[type]) {
+                chats[activeChatId].newMessages[type] = false;
+                saveChats();
+                renderAdminChatList();
+            }
+        }
+
+        function adminSendMessage() {
+            if (!loggedInAdmin || !activeChatId) return;
+            const text = document.getElementById('adminMessageInput').value.trim();
+            if (!text) return;
+            
+            const msg = { text: text, sender: 'admin', timestamp: Date.now() };
+
+            chats[activeChatId].chats[activeAdminChatType].push(msg);
+            chats[activeChatId].newMessages[activeAdminChatType] = false; 
+            saveChats();
+            
+            document.getElementById('adminMessageInput').value = '';
+            renderMessages('adminMessagesContent', activeChatId, activeAdminChatType);
+            renderAdminChatList();
+        }
+
+        document.getElementById('adminSendMessageBtn').addEventListener('click', adminSendMessage);
+
+        /* ======= وظائف إدارة الخلفيات (لم تتغير) ======= */
+
+        function loadBackgroundTargetOptions() {
+            loadCurrentBackground();
+        }
+
+        function loadCurrentBackground() {
+            const targetId = document.getElementById('backgroundTarget').value;
+            const bgImageFile = document.getElementById('bgImageFile');
+            const bgImageUrl = document.getElementById('bgImageUrl');
+            const bgVideoUrl = document.getElementById('bgVideoUrl');
+            const imageControls = document.getElementById('imageControls');
+            const videoControls = document.getElementById('videoControls');
+            
+            bgImageFile.value = '';
+            bgImageUrl.value = '';
+            bgVideoUrl.value = '';
+            
+            let targetBgData;
+            
+            if (targetId === 'global_image') {
+                targetBgData = backgrounds.global_image;
+                imageControls.style.display = 'block';
+                videoControls.style.display = 'none';
+            } else if (targetId === 'global_video') {
+                targetBgData = backgrounds.global_video;
+                imageControls.style.display = 'none';
+                videoControls.style.display = 'block';
+            } else {
+                targetBgData = backgrounds[targetId];
+                imageControls.style.display = 'block';
+                videoControls.style.display = 'block';
+            }
+
+            if (targetBgData) {
+                if (targetBgData.type === 'image') {
+                    bgImageUrl.value = targetBgData.url || '';
+                } else if (targetBgData.type === 'video') {
+                    bgVideoUrl.value = targetBgData.url || '';
+                }
+            }
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function setSpecificBackground(type) {
+            const targetId = document.getElementById('backgroundTarget').value;
+            let url = null;
+            
+            if (type === 'image') {
+                const fileInput = document.getElementById('bgImageFile');
+                const urlInput = document.getElementById('bgImageUrl');
+                
+                if (fileInput.files.length > 0) {
+                    try {
+                        url = await fileToBase64(fileInput.files[0]);
+                    } catch (error) {
+                        alert('خطأ في قراءة ملف الصورة.');
+                        return;
+                    }
+                } else if (urlInput.value.trim()) {
+                    url = urlInput.value.trim();
+                } else {
+                    url = null;
+                }
+            } else if (type === 'video') {
+                const urlInput = document.getElementById('bgVideoUrl');
+                if (urlInput.value.trim()) {
+                    url = urlInput.value.trim();
+                } else {
+                    url = null;
+                }
+            }
+
+            processBackgroundSet(targetId, type, url);
+            
+            if (url) alert(`تم تعيين الخلفية (${type === 'image' ? 'صورة' : 'فيديو'}) بنجاح.`);
+            else alert(`تم إزالة الخلفية المخصصة لهذا القسم.`);
+            
+            if (currentActiveSection === targetId || targetId.startsWith('global_')) {
+                 applyBackground(currentActiveSection);
+            }
+        }
+        
+        function processBackgroundSet(targetId, type, url) {
+            const data = url ? { type: type, url: url } : null;
+
+            if (targetId === 'global_image') {
+                backgrounds.global_image = data;
+                if (data && type === 'image' && backgrounds.global_video) { backgrounds.global_video = null; }
+            } else if (targetId === 'global_video') {
+                backgrounds.global_video = data;
+                if (data && type === 'video' && backgrounds.global_image) { backgrounds.global_image = null; }
+            } else {
+                backgrounds[targetId] = data;
+            }
+            
+            saveBackgrounds();
+            loadCurrentBackground(); 
+        }
+
+        function applyBackground(sectionId) {
+            const body = document.body;
+            const video = document.getElementById('backgroundVideo');
+            
+            let bgData = backgrounds[sectionId];
+            
+            if (!bgData) {
+                if (backgrounds.global_video) {
+                     bgData = backgrounds.global_video;
+                } else if (backgrounds.global_image) {
+                    bgData = backgrounds.global_image;
+                }
+            }
+
+            // Reset
+            body.style.backgroundImage = 'none';
+            video.style.display = 'none';
+            video.pause();
+            video.src = ''; 
+            video.load();
+
+            if (bgData && bgData.url) {
+                if (bgData.type === 'video') {
+                    video.src = bgData.url;
+                    video.style.display = 'block';
+                    video.load();
+                    video.play().catch(e => {
+                        console.log('Video autoplay blocked, trying to set image if available.', e);
+                        if (backgrounds.global_image && backgrounds.global_image.url) {
+                            body.style.backgroundImage = `url('${backgrounds.global_image.url}')`;
+                        }
+                    });
+                } else if (bgData.type === 'image') {
+                    body.style.backgroundImage = `url('${bgData.url}')`;
+                }
+            } else {
+                body.style.backgroundImage = 'none';
+            }
+        }
+
+        /* ======= وظائف قسم العملاء والطلبات الجديد (لم تتغير) ======= */
+
+        function initAdminClientOrders() {
+            // إظهار قسم العملاء والبحث
+            document.getElementById('adminClientsListArea').style.display = 'block';
+            // إخفاء قسم الطلبات التفصيلي
+            document.getElementById('clientOrdersDetailArea').style.display = 'none';
+            // مسح حقول البحث
+            document.getElementById('clientSearchInput').value = '';
+            document.getElementById('orderSearchInput').value = '';
+            // عرض قائمة العملاء
+            filterClients();
+        }
+
+        function filterClients() {
+            const searchTerm = document.getElementById('clientSearchInput').value.toLowerCase().trim();
+            const listDiv = document.getElementById('filteredClientsList');
+            listDiv.innerHTML = '';
+            
+            const filtered = clients.filter(client => 
+                !searchTerm ||
+                client.name.toLowerCase().includes(searchTerm) ||
+                client.phone.includes(searchTerm) 
+            );
+
+            if (filtered.length === 0) {
+                listDiv.innerHTML = '<p class="small">لا يوجد عملاء مطابقون للبحث.</p>';
+                return;
+            }
+
+            filtered.forEach(client => {
+                const totalOrders = orders.filter(o => o.clientId === client.phone).length;
+                const div = document.createElement('div');
+                div.className = 'client-item';
+                div.onclick = () => displayClientOrders(client);
+                div.innerHTML = `
+                    <p style="margin: 0;"><strong>الاسم:</strong> ${client.name}</p>
+                    <p style="margin: 5px 0 0 0; font-size: 16px;"><strong>التليفون/ID:</strong> ${client.phone}</p>
+                    <p style="margin: 5px 0 0 0; font-size: 16px; color: #fff;"><strong>إجمالي الطلبات:</strong> ${totalOrders}</p>
+                `;
+                listDiv.appendChild(div);
+            });
+        }
+
+        function displayClientOrders(client) {
+            currentClientForOrders = client;
+            document.getElementById('clientOrdersHeader').textContent = `طلبات العميل: ${client.name} (ID: ${client.phone})`;
+            
+            // إخفاء قسم العملاء وعرض قسم الطلبات
+            document.getElementById('adminClientsListArea').style.display = 'none';
+            document.getElementById('clientOrdersDetailArea').style.display = 'block';
+            document.getElementById('orderSearchInput').value = '';
+            
+            filterClientOrders();
+        }
+
+        function filterClientOrders() {
+            if (!currentClientForOrders) return;
+
+            const searchTerm = document.getElementById('orderSearchInput').value.toLowerCase().trim();
+            const ordersListDiv = document.getElementById('currentClientOrdersList');
+            ordersListDiv.innerHTML = '';
+
+            const clientOrders = orders
+                .filter(o => o.clientId === currentClientForOrders.phone)
+                .sort((a, b) => b.date.localeCompare(a.date)); // ترتيب تنازلي حسب التاريخ
+
+            const filteredOrders = clientOrders.filter(order => 
+                !searchTerm ||
+                order.id.toLowerCase().includes(searchTerm)
+            );
+
+            if (filteredOrders.length === 0) {
+                ordersListDiv.innerHTML = '<p class="small">لا توجد طلبات سابقة لهذا العميل مطابقة للبحث.</p>';
+                return;
+            }
+
+            filteredOrders.forEach((order, index) => {
+                const item = document.createElement('div');
+                item.className = 'client-order-item';
+                item.innerHTML = `
+                    <p style="font-weight: bold; color: #00bcd4;">الترقيم: ${index + 1}</p>
+                    <p><strong>كود الطلب:</strong> ${order.id}</p>
+                    <p><strong>التاريخ:</strong> ${order.date}</p>
+                    <p><strong>الحالة:</strong> <span style="font-weight: bold; color: ${order.status === 'completed' ? '#4CAF50' : order.status === 'cancelled' ? '#ff5252' : '#ff8c00'};">${getStatusText(order.status)}</span></p>
+                    <p><strong>المنتج:</strong> <img src="${order.imageUrl}" style="max-width: 80px; display: block; margin: 5px auto 10px 0; border-radius: 5px;"/></p>
+                    <div class="order-actions">
+                        <button style="font-size: 14px; padding: 5px 8px;" onclick="updateOrderStatus('${order.id}', 'pending')">معلَّق</button> 
+                        <button style="font-size: 14px; padding: 5px 8px;" onclick="updateOrderStatus('${order.id}', 'in_progress')">قيد التنفيذ</button>
+                        <button style="font-size: 14px; padding: 5px 8px;" onclick="updateOrderStatus('${order.id}', 'completed')">مكتمل</button>
+                        <button class="delete-btn" style="font-size: 14px; padding: 5px 8px;" onclick="updateOrderStatus('${order.id}', 'cancelled')">إلغاء</button>
+                    </div>
+                `;
+                ordersListDiv.appendChild(item);
+            });
+        }
+    </script>
+</body>
+</html>
